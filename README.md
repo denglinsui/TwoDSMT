@@ -35,7 +35,7 @@ const <- q # const for stablizing
 # Generate data
 point <- matrix(seq(0,1,length.out=m), ncol=1)
 Dist.p <- as.matrix(dist(point))
-I_S <- Init_Setting_1D(mu_type = "Dense",Cov_type = "Weak",
+I_S <- Init_Setting_1D(mu_type = "Sparse",Cov_type = "Weak",
                        magnitude=2,mu_gen_machine="mvnorm",point=point)
 mu <- I_S$mu
 Sigma.eps.p <- I_S$Sigma.eps.p
@@ -69,9 +69,18 @@ tm <- res.2D.sabha$tm0
 ta <- res.2D.sabha$ta0
 # fdp and power
 fdp(sab.selected,mu);fdp(selected.2D.sabha,mu)
-#> [1] 0
-#> [1] 0
 Pow(sab.selected,mu);Pow(selected.2D.sabha,mu)
-#> [1] 0.6363636
-#> [1] 0.8181818
+```
+
+## Notes
+More information/examples can be obtaind by 
+
+``` r
+# without location specific weights
+?TwoDSMT
+?Spatial_Detect_exact_grp_BH_down
+
+# with location specific weights
+?TwoDwSMT
+?Spatial_Detect_exact_BH_down_reTm_reTa
 ```
