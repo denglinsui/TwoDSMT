@@ -1,20 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TwodSpatial
+# TwodSMT
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of TwoDSMT is to conduct multiple hypothesis testing on the
-spatial domain using neighboring information.
+The goal of TwoDSMT is to conduct multiple hypothesis testing on the spatial domain using neighboring information.
 
 ## Installation
 
 You can install the development version of TwoDSMT like so:
 
 ``` r
-R CMD INSTALL TwoDSMT_0.0.0.9000.tar.gz
+devtools::install_github("denglinsui/TwoDSMT")
 ```
 
 ## Example
