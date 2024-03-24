@@ -768,19 +768,22 @@ Spatial_Detect_exact_grp_BH_down <- function(Tm, Ta, Va, VmVa.cov, ind,
   if(EmpMethod == "NPEB"){
     if(is.fullset){
       ## We just consider one dimensional case
-      mm <- GLmix(x = eta[ind])
-      normalized.prob <- mm$y / sum(mm$y)
-      num.par <- 1
-      for(ind.par in (ind[1]+1):(ind[2]-1)){
-        ind.cur <- ind+ind.par-1
-        ind.cur <- ind.cur[ind.cur<=m] # avoid out-of-subscript
+      # mm <- GLmix(x = eta[ind])
+      # normalized.prob <- mm$y / sum(mm$y)
+      # num.par <- 1
+      # for(ind.par in (ind[1]+1):(ind[2]-1)){
+      #   ind.cur <- ind+ind.par-1
+      #   ind.cur <- ind.cur[ind.cur<=m] # avoid out-of-subscript
+      #
+      #   mm.tmp <- GLmix(x = eta[ind.cur])
+      #   mm$x <- c(mm$x,mm.tmp$x)
+      #   normalized.prob <- c(normalized.prob,mm.tmp$y / sum(mm.tmp$y))
+      #   num.par <- num.par+1
+      # }
+      # normalized.prob <- normalized.prob/num.par
 
-        mm.tmp <- GLmix(x = eta[ind.cur])
-        mm$x <- c(mm$x,mm.tmp$x)
-        normalized.prob <- c(normalized.prob,mm.tmp$y / sum(mm.tmp$y))
-        num.par <- num.par+1
-      }
-      normalized.prob <- normalized.prob/num.par
+      mm <- GLmix(x = eta)
+      normalized.prob <- mm$y / sum(mm$y)
     }else{
       #=== Perform Non-parametric Emprical Bayesian
       mm <- GLmix(x = eta[ind])
@@ -1158,20 +1161,22 @@ Spatial_Detect_exact_BH_down_reTm_reTa <- function(Tm, Ta, Va, VmVa.cov, ind,
   if(EmpMethod == "NPEB"){
     #=== Perform Non-parametric Emprical Bayesian
     if(is.fullset){
-      ## We just consider one dimensional case
-      mm <- GLmix(x = eta[ind])
+      # ## We just consider one dimensional case
+      # mm <- GLmix(x = eta[ind])
+      # normalized.prob <- mm$y / sum(mm$y)
+      # num.par <- 1
+      # for(ind.par in (ind[1]+1):(ind[2]-1)){
+      #   ind.cur <- ind+ind.par-1
+      #   ind.cur <- ind.cur[ind.cur<=m] # avoid out-of-subscript
+      #
+      #   mm.tmp <- GLmix(x = eta[ind.cur])
+      #   mm$x <- c(mm$x,mm.tmp$x)
+      #   normalized.prob <- c(normalized.prob,mm.tmp$y / sum(mm.tmp$y))
+      #   num.par <- num.par+1
+      # }
+      # normalized.prob <- normalized.prob/num.par
+      mm <- GLmix(x = eta)
       normalized.prob <- mm$y / sum(mm$y)
-      num.par <- 1
-      for(ind.par in (ind[1]+1):(ind[2]-1)){
-        ind.cur <- ind+ind.par-1
-        ind.cur <- ind.cur[ind.cur<=m] # avoid out-of-subscript
-
-        mm.tmp <- GLmix(x = eta[ind.cur])
-        mm$x <- c(mm$x,mm.tmp$x)
-        normalized.prob <- c(normalized.prob,mm.tmp$y / sum(mm.tmp$y))
-        num.par <- num.par+1
-      }
-      normalized.prob <- normalized.prob/num.par
     }else{
       #=== Perform Non-parametric Emprical Bayesian
       mm <- GLmix(x = eta[ind])
