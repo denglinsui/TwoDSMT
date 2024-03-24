@@ -13,7 +13,7 @@ Neigh_Partition(S.neigh)
 an integer vector representing the indexes for implementing nonparametric empirical Bayes;
 }
 \description{
-Neighbor Partition: To make the neighbors of different location do not intersect.
+To make the neighbors of different location do not intersect.
 }
 \examples{
 m <- 900

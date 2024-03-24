@@ -21,7 +21,13 @@ Spatial_Detect_exact_grp_BH_down(
   dig = 7,
   tau.tm = 1,
   tau.ta = 1,
-  mua = NULL
+  mua = NULL,
+  is.quick.stop = F,
+  stop.step = 10,
+  is.fullset = F,
+  is.fixRectShape = F,
+  sig_ratio = NULL,
+  EmpMethod = c("NPEB", "DeCor")
 )
 }
 \arguments{
@@ -58,6 +64,18 @@ Spatial_Detect_exact_grp_BH_down(
 \item{tau.ta}{a numerical value representing the censor level for p-values.}
 
 \item{mua}{a numerical vector representing the population mean of auxiliary statistics (Usually unavailable).}
+
+\item{is.quick.stop}{a bool value representing whether we should stop early.}
+
+\item{stop.step}{an integer indicating the maximal step for no valuable finding(estimate fdr<target fdr level).}
+
+\item{is.fullset}{a bool value representing whether we take all partitions of full set for implementing NPEB.}
+
+\item{is.fixRectShape}{a bool value representing whether the shape of rectangle is fixed}
+
+\item{sig_ratio}{a numerical vector representing the estimated ratio of magnitude.}
+
+\item{EmpMethod}{a character indicating which method we choose to estimate the empirical distribution.}
 }
 \value{
 list;

@@ -1,5 +1,6 @@
-#' Two Dimensional Spatial Multiple Testing Procedure
+#' 2d-SMT: Two dimensional spatial multiple testing procedure
 
+#' @description
 #' Searching for the optimal threshold for the two dimensional spatial multiple testing procedure (2d-SMT) based on the primary and auxiliary statistics.
 #' @param X a n*m matrix representing the observations, m is the number of locations, n is the number of observations at each location.
 #' @param Sigma.eps.p a m*m matrix representing the covariance matrix for noises.
@@ -118,8 +119,8 @@ TwoDSMT <- function(X,
 }
 
 
-#' Two Dimensional weighted spatial multiple testing procedure (2d-SMT) Procedure
-
+#' 2d-SMT(w): Two dimensional weighted spatial multiple testing procedure
+#' @description
 #' Searching for the optimal threshold for the two dimensional spatial multiple testing procedure (2d-SMT) procedure based on the primary and auxiliary statistics.
 #' @param X a n*m matrix representing the observations, m is the number of locations, n is the number of observations at each location.
 #' @param Sigma.eps.p a m*m matrix representing the covariance matrix for noises.

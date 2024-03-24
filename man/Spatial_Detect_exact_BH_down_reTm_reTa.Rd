@@ -2,7 +2,7 @@
 % Please edit documentation in R/Spatial_Detection.R
 \name{Spatial_Detect_exact_BH_down_reTm_reTa}
 \alias{Spatial_Detect_exact_BH_down_reTm_reTa}
-\title{Two dimension detection for primary statistics (weighted BH based)}
+\title{Two dimension detection (weighted BH based)}
 \usage{
 Spatial_Detect_exact_BH_down_reTm_reTa(
   Tm,
@@ -20,7 +20,9 @@ Spatial_Detect_exact_BH_down_reTm_reTa(
   const = 0,
   seed = 0,
   dig = 7,
-  ws.fun = function(pis) {     (1 - pis)/pis },
+  ws.fun = function(pis) {
+     (1 - pis)/pis
+ },
   n.group.max = 10,
   is.exact.group = F,
   tol = 1e-09,
@@ -28,7 +30,11 @@ Spatial_Detect_exact_BH_down_reTm_reTa(
   tau.ta = 1,
   adj.up = 0.9,
   adj.ud = 1.1,
-  mua = NULL
+  mua = NULL,
+  is.quick.stop = F,
+  stop.step = 10,
+  is.fullset = F,
+  EmpMethod = c("NPEB", "DeCor")
 )
 }
 \arguments{
@@ -76,9 +82,17 @@ Spatial_Detect_exact_BH_down_reTm_reTa(
 
 \item{adj.up}{a numerical value to ensure the precision during calculation, it should be below 1;}
 
-\item{adj.ud}{a numerical value to ensure the preceision during calculation, it should be above 1;}
+\item{adj.ud}{a numerical value to ensure the precision during calculation, it should be above 1;}
 
 \item{mua}{a numerical vector representing the population mean of auxiliary statistics (Usually unavailable).}
+
+\item{is.quick.stop}{a bool value representing whether we should stop early.}
+
+\item{stop.step}{an integer indicating the maximal step for no valuable finding(estimate fdr<target fdr level).}
+
+\item{is.fullset}{a bool value representing whether we take all partitons of full set for implementing NPEB}
+
+\item{EmpMethod}{a character indicating which method we choose to estimate the empirical distribution.}
 }
 \value{
 list;

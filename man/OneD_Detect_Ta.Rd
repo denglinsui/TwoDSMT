@@ -2,7 +2,7 @@
 % Please edit documentation in R/Spatial_Detection.R
 \name{OneD_Detect_Ta}
 \alias{OneD_Detect_Ta}
-\title{One dimension detection for auxiliary statistics (BH based)}
+\title{One dimension detection for auxiliary statistics}
 \usage{
 OneD_Detect_Ta(Ta, q = 0.1, ind, pis = NULL)
 }
@@ -22,7 +22,7 @@ ta.min is the one dimensional threshold for auxiliary statistics;
 max.rej is an interger indicating the number of selected locations.
 }
 \description{
-One Dimension Detection based on the auxiliary statistics.
+The degenerated 2d-SMT by setting the threshold for Tm to negative infinity.
 }
 \examples{
 fdr.level <- 0.1

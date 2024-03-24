@@ -39,7 +39,6 @@ tm.min is the one dimensional threshold;
 max.rej is an interger indicating the number of selected locations.
 }
 \description{
-One Dimension Detection (weighted) based on the primary statistics.
 This is an equivalent expression for weighted BH procedure if we set const=0 and tau.tm=1.
 The weights and pis can be assigned separately.
 }

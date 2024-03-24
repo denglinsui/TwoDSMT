@@ -2,7 +2,7 @@
 % Please edit documentation in R/Spatial_Detection.R
 \name{OneD_Detect}
 \alias{OneD_Detect}
-\title{One dimension detection for primary statistics (BH based)}
+\title{One dimension detection for primary statistics}
 \usage{
 OneD_Detect(Tm, q = 0.1, pis = NULL, const = 0, tau.tm = 1)
 }
@@ -24,7 +24,8 @@ tm.min is the one dimensional threshold;
 max.rej is an interger indicating the number of selected locations.
 }
 \description{
-This is an equivalent expression for BH procedure if we set const=0 and tau.tm=1.
+The degenerated 2d-SMT by setting the threshold for Ta to negative infinity.
+This is an equivalent expression for BH procedure if we set const=0, tau.tm=1, and pis = 1.
 }
 \examples{
 fdr.level <- 0.1

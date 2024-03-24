@@ -24,8 +24,8 @@
 
 #' Neighbor Detection
 #'
-#' Neighbor Detection: 1. Detect the neighors (K-nearest neighbors) of each location according to the Distance matrix; 2. Calculate auxiliary test statistics;
-#' 3. Calculate the variance of primary and auxiliary test statistics and covariance between them
+#' 1. Detect the neighbors (K-nearest neighbors) of each location according to the distance matrix; 2. Calculate auxiliary test statistics;
+#' 3. Calculate the variance of primary and auxiliary test statistics and covariance between them.
 #' @param hh an integer vector indicating the number of neighbors for each location.
 #' @param X a n*m matrix representing the observations, m is the number of locations, n is the number of observations at each location.
 #' @param Dist a m*m matrixes representing the distance matrix between points.
@@ -162,7 +162,7 @@ Neigh_Detect <- function(hh, X, Dist, Sigma.eps, detect.m = "top.k",mu=NULL){
 
 #' Neighbor Partition
 #'
-#' Neighbor Partition: To make the neighbors of different location do not intersect.
+#' To make the neighbors of different location do not intersect.
 #' @param S.neigh a list consists of m vector, i-th vector is the indexes of the i-th location's neighbors.
 #'
 #' @return an integer vector representing the indexes for implementing nonparametric empirical Bayes;
@@ -443,10 +443,10 @@ L.cal <- function(tm,ta,
 }
 
 
-#' One dimension detection for primary statistics (BH based)
+#' One dimension detection for primary statistics
 #'
-#‘ One Dimension Detection based on the primary statistics.
-#' This is an equivalent expression for BH procedure if we set const=0 and tau.tm=1.
+#' The degenerated 2d-SMT by setting the threshold for Ta to negative infinity.
+#' This is an equivalent expression for BH procedure if we set const=0, tau.tm=1, and pis = 1.
 #' @param Tm a numerical vector representing the auxiliary statistics.
 #' @param q a numerical value representing the target fdr level.
 #' @param pis a numerical vector representing the probability of being null.
@@ -496,9 +496,9 @@ OneD_Detect <- function(Tm,
 
 
 
-#' One dimension detection for auxiliary statistics (BH based)
+#' One dimension detection for auxiliary statistics
 #'
-#' One Dimension Detection based on the auxiliary statistics.
+#' The degenerated 2d-SMT by setting the threshold for Tm to negative infinity.
 #' @param Ta a numerical vector representing the auxiliary statistics.
 #' @param q a numerical value representing the target fdr level.
 #' @param ind an integer vector representing the indexes for implementing nonparametric empirical Bayes.
@@ -553,7 +553,6 @@ OneD_Detect_Ta <- function(Ta,
 
 #' One dimension detection for primary statistics (weighted BH based)
 #'
-#' One Dimension Detection (weighted) based on the primary statistics.
 #' This is an equivalent expression for weighted BH procedure if we set const=0 and tau.tm=1.
 #' The weights and pis can be assigned separately.
 #' @param Tm a numerical vector representing the auxiliary statistics.
@@ -767,21 +766,6 @@ Spatial_Detect_exact_grp_BH_down <- function(Tm, Ta, Va, VmVa.cov, ind,
   #=== Perform Non-parametric Emprical Bayesian
   if(EmpMethod == "NPEB"){
     if(is.fullset){
-      ## We just consider one dimensional case
-      # mm <- GLmix(x = eta[ind])
-      # normalized.prob <- mm$y / sum(mm$y)
-      # num.par <- 1
-      # for(ind.par in (ind[1]+1):(ind[2]-1)){
-      #   ind.cur <- ind+ind.par-1
-      #   ind.cur <- ind.cur[ind.cur<=m] # avoid out-of-subscript
-      #
-      #   mm.tmp <- GLmix(x = eta[ind.cur])
-      #   mm$x <- c(mm$x,mm.tmp$x)
-      #   normalized.prob <- c(normalized.prob,mm.tmp$y / sum(mm.tmp$y))
-      #   num.par <- num.par+1
-      # }
-      # normalized.prob <- normalized.prob/num.par
-
       mm <- GLmix(x = eta)
       normalized.prob <- mm$y / sum(mm$y)
     }else{
@@ -992,7 +976,7 @@ Spatial_Detect_exact_grp_BH_down <- function(Tm, Ta, Va, VmVa.cov, ind,
 
 
 
-#' Two dimension detection for primary statistics (weighted BH based)
+#' Two dimension detection (weighted BH based)
 #'
 #' Searching for the optimal threshold for the two dimensional weighted BH procedure based on primary and auxiliary statistics.
 #' Practically, we reorder p-values according to the non-null weights ws.
@@ -1161,20 +1145,6 @@ Spatial_Detect_exact_BH_down_reTm_reTa <- function(Tm, Ta, Va, VmVa.cov, ind,
   if(EmpMethod == "NPEB"){
     #=== Perform Non-parametric Emprical Bayesian
     if(is.fullset){
-      # ## We just consider one dimensional case
-      # mm <- GLmix(x = eta[ind])
-      # normalized.prob <- mm$y / sum(mm$y)
-      # num.par <- 1
-      # for(ind.par in (ind[1]+1):(ind[2]-1)){
-      #   ind.cur <- ind+ind.par-1
-      #   ind.cur <- ind.cur[ind.cur<=m] # avoid out-of-subscript
-      #
-      #   mm.tmp <- GLmix(x = eta[ind.cur])
-      #   mm$x <- c(mm$x,mm.tmp$x)
-      #   normalized.prob <- c(normalized.prob,mm.tmp$y / sum(mm.tmp$y))
-      #   num.par <- num.par+1
-      # }
-      # normalized.prob <- normalized.prob/num.par
       mm <- GLmix(x = eta)
       normalized.prob <- mm$y / sum(mm$y)
     }else{

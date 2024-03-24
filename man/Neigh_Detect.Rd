@@ -25,10 +25,13 @@ Va is a numerical vector representing the variance of auxiliary statistics;
 VmVa.cov is a numerical vector representing the covariance between primary and auxiliary statistics;
 ind is an integer vector representing the indexes for implementing nonparametric empirical Bayes;
 mua is a numerical vector representing the population mean of auxiliary statistics (Usually unavailable).
+sig_ratio is a numerical vector representing the estimated ratio of magnitude.
 }
 \description{
-Neighbor Detection: 1. Detect the neighors (K-nearest neighbors) of each location according to the Distance matrix; 2. Calculate auxiliary test statistics;
-3. Calculate the variance of primary and auxiliary test statistics and covariance between them
+\enumerate{
+\item Detect the neighbors (K-nearest neighbors) of each location according to the distance matrix; 2. Calculate auxiliary test statistics;
+\item Calculate the variance of primary and auxiliary test statistics and covariance between them.
+}
 }
 \examples{
 library(dplyr)
@@ -75,11 +78,13 @@ Va <- Neigh_Detect_res$Va
 VmVa.cov <- Neigh_Detect_res$VmVa.cov
 ind <- Neigh_Detect_res$ind
 mua <- Neigh_Detect_res$mua
+sig_ratio <- Neigh_Detect_res$sig_ratio
 
 res.2D <- Spatial_Detect_exact_grp_BH_down(Tm, Ta, Va, VmVa.cov, ind,
                                            q, max.rej,
                                            Tm.star = Tm.star,
                                            Ta.star = Inf,
+                                           sig_ratio=sig_ratio,
                                            const = const)
 selected.2D <- res.2D$selected
 tm <- res.2D$tm0

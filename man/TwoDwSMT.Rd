@@ -2,8 +2,7 @@
 % Please edit documentation in R/TwoDimDetection.R
 \name{TwoDwSMT}
 \alias{TwoDwSMT}
-\title{Two Dimensional weighted spatial multiple testing procedure (2d-SMT) Procedure
-Searching for the optimal threshold for the two dimensional spatial multiple testing procedure (2d-SMT) procedure based on the primary and auxiliary statistics.}
+\title{2d-SMT(w): Two dimensional weighted spatial multiple testing procedure}
 \usage{
 TwoDwSMT(
   X,
@@ -67,7 +66,6 @@ ta0 a numerical value representing the threshold for the auxiliary statistics;
 final.fdr a numerical value representing the final estimated false discovery rate.
 }
 \description{
-Two Dimensional weighted spatial multiple testing procedure (2d-SMT) Procedure
 Searching for the optimal threshold for the two dimensional spatial multiple testing procedure (2d-SMT) procedure based on the primary and auxiliary statistics.
 }
 \examples{
